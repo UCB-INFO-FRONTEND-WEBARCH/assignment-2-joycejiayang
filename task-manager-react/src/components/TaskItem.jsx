@@ -1,15 +1,15 @@
 import {useState} from 'react'
 import './TaskItem.css'
 
-function TaskItem({id, completed, taskText}) {
+function TaskItem({task}) {
     return (
         <li className="task-item today">
             <input 
                 type="checkbox" 
-                id={id} 
+                id={task.id} 
                 name="tasks" 
-                checked={completed}/>
-            <label className="task-description" htmlFor={id}>{taskText}</label>
+                checked={task.completed}/>
+            <label className="task-description" htmlFor={task.id}>{task.text}</label>
         </li>
     )
 }

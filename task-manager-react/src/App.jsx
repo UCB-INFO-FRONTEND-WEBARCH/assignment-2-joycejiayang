@@ -10,6 +10,34 @@ import calendarIcon from './assets/calendar_icon.png'
 import upcomingIcon from './assets/upcoming_icon.png'
 
 function App() {
+  const taskArray = [
+    {
+      id: "task1",
+      completed: false,
+      text: "Call Mom"
+    },
+    {
+      id: "task2",
+      completed: false,
+      text: "Buy the new issue of Scientific American"
+    },
+    {
+      id: "task3",
+      completed: false,
+      text: "Return the textbook to Josie"
+    },
+    {
+      id: "task4",
+      completed: false,
+      text: "Buy the new album by Rake"
+    },
+    {
+      id: "task5",
+      completed: false,
+      text: "Buy a gift card for Dad"
+    }
+  ]
+
   return (
     <>
       {/* Red navigation bar with search and menu functionality */}
@@ -64,12 +92,7 @@ function App() {
 
         {/* Task list display area */}
         <main className="main">
-            <h1 id="inbox-header">Inbox</h1>
-            <h2 id="today-header">Today</h2>
-            <h2 id="upcoming-header">Upcoming</h2>
-
-            {/* Use unordered lists for navigation and task items */}
-            <TaskList />
+            <TaskList taskArray={taskArray}/>
         </main>
     </>
   )
