@@ -1,80 +1,226 @@
 /* Header */
 .header {
-    display: grid;
-    grid-template-columns: 70px 230px 1fr;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    background-color: #dc4c3e;
-    color: #ffffff;
-    width: 100%;
-    height: 50px;
-    z-index: 999;
+  display: grid;
+  grid-template-columns: 70px 230px 1fr;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  background-color: #dc4c3e;
+  color: #ffffff;
+  width: 100%;
+  height: 50px;
+  z-index: 999;
 }
 
 .header div {
-    display: flex;
-    align-items: center;
-    width: fit-content;
+  display: flex;
+  align-items: center;
+  width: fit-content;
 }
 
 .menu {
-    padding-top: 6px;
-    padding-bottom: 6px;
-    margin-top: 3px;
-    margin-left: 20px;
-    border-radius: 3px;
-    transition: background-color 100ms;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 3px;
+  margin-left: 20px;
+  border-radius: 3px;
+  transition: background-color 100ms;
 }
 
 .menu:hover {
-    cursor: pointer;
-    background-color:rgba(0, 0, 0, 0.10);
+  cursor: pointer;
+  background-color:rgba(0, 0, 0, 0.10);
 }
 
 #menu-toggle {
-    display: none;
+  display: none;
 }
 
 .header:has(#menu-toggle:not(:checked)) + .nav {
-    display: none;
+  display: none;
 }
 
 .search-bar {
-    width: 100%;
+  width: 100%;
 }
 
 .search-bar input {
-    position: relative;
-    background-color: transparent;
-    border: none;
-    color: white;
-    padding: 10px 10px 10px 36px;
-    width: 100%;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.15);
-    transition: background-color 100ms;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 10px 10px 10px 36px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 100ms;
 }
 
 .search-bar input::placeholder {
-    color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .search-bar input:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .search-bar input:focus {
-    background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .search-bar .icon {
-    position: absolute;
-    margin-left: 5px;
+  position: absolute;
+  margin-left: 5px;
 }
 
 .task-counter {
-    justify-self: flex-end;
-    margin-right: 20px;
-    gap: 2px;
+  justify-self: flex-end;
+  margin-right: 20px;
+  gap: 2px;
+}
+
+/* Navigation */
+.nav {
+  width: 300px;
+  padding-top: 50px; /* 50px offset for fixed header */
+  background-color: #fefbf2;
+  color: black;
+}
+
+.nav-list {
+  padding: 25px 20px;
+}
+
+.nav-list input[type="radio"] {
+  display: none;
+}
+
+.nav-item-box {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 100ms;
+}
+
+.nav-item-box:hover {
+  background-color: rgba(0, 0, 0, 0.10);
+}
+
+.nav-item-box p {
+  width: fit-content;
+  line-height: 30px;
+}
+
+.nav-item-box .task-count {
+  color: #7e7d79;
+  font-size: 12px;
+  line-height: 28px;
+  vertical-align: bottom;
+  margin-left: 4px;
+}
+
+.nav-list input[type="radio"]:checked + .nav-item-box {
+  background-color: white;
+}
+
+.nav-list input[type="radio"]:checked + .nav-item-box > p {
+  font-weight: 600;
+}
+
+/* Main */
+.main {
+  padding: 82px 40px 32px; /* 50px offset for fixed header */
+  flex: 1;
+}
+
+.main h1, h2 {
+  display: none; /* we'll set display to block based on which nav is active */
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.task-list-item {
+  padding: 8px 0;
+  border-bottom: solid 1.5px #eee;
+}
+
+.task-list-item input {
+  display: none;
+}
+
+.task-list-item .task-description {
+  display: block;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.task-list-item .task-description::before { /* styling the checkbox */
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  top: 4px;
+  border-radius: 15px;
+  margin-right: 10px;
+  border: solid 1px #7e7d79;
+}
+
+.task-list-item input[type="checkbox"]:checked + .task-description::before { /* style the radio-checkbox when checked */
+  width: 15px;
+  height: 15px;
+  background-color: #dc4c3e;
+  border-color: #dc4c3e;
+  outline: solid 1.5px white;
+  outline-offset: -3px;
+}
+
+.task-list-item input[type="checkbox"]:checked +  .task-description {
+  color: #7e7d79;
+  text-decoration: line-through;
+  text-decoration-color: #dc4c3e;
+}
+
+em {
+  color: #7e7d79;
+  padding: 10px 0;
+}
+
+/* Nav + Inbox Connection */
+.today {
+  display: block; /* we'll set display to block based on which nav is active */
+}
+
+.upcoming {
+  display: none; /* we'll set display to block based on which nav is active */
+}
+
+.nav:has(#nav-inbox:checked) + .main #inbox-header {
+  display: block;
+}
+
+.nav:has(#nav-today:checked) + .main #today-header {
+  display: block;
+}
+
+.nav:has(#nav-upcoming:checked) + .main #upcoming-header {
+  display: block;
+}
+
+.nav:has(#nav-upcoming:checked) + .main .today {
+  display: none;
+}
+
+.nav:has(#nav-upcoming:checked) + .main .upcoming {
+  display: block;
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+  .nav {
+    display: none;
+  }
 }

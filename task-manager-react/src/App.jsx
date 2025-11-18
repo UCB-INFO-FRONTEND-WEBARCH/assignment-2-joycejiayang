@@ -3,10 +3,14 @@ import './App.css'
 import menuIcon from '../src/assets/menu_icon.png'
 import searchIcon from '../src/assets/search_icon.png'
 import checkIcon from '../src/assets/check_icon.png'
+import inboxIcon from '../src/assets/inbox_icon.png'
+import calendarIcon from '../src/assets/calendar_icon.png'
+import upcomingIcon from '../src/assets/upcoming_icon.png'
 
 function App() {
   return (
     <>
+      {/* Red navigation bar with search and menu functionality */}
       <header className="header">
         <input type="checkbox" id="menu-toggle" name="menu-toggle" checked />
         <label id="menu-label" for="menu-toggle">
@@ -23,6 +27,71 @@ function App() {
             <span>30/5</span>
         </div>
       </header>
+
+      {/* Sidebar with task categories and counts */}
+        <nav className="nav">
+            {/* Use unordered lists for navigation and task items */}
+             <ul className="nav-list">
+                <li className="hav-list-item">
+                    <input type="radio" id="nav-inbox" name="navs" checked />
+                    <label className="nav-item-box" for="nav-inbox">
+                        <img className="icon" alt="Inbox Icon" src={inboxIcon} />
+                        <p>Inbox</p>
+                        <span className="task-count">5</span>
+                    </label>
+                </li>
+
+                <li className="hav-list-item">
+                    <input type="radio" id="nav-today" name="navs" />
+                    <label className="nav-item-box" for="nav-today">
+                        <img className="icon" alt="Today Icon" src={calendarIcon} />
+                        <p>Today</p>
+                        <span className="task-count">5</span>
+                    </label>
+                </li>
+
+                <li className="hav-list-item">
+                    <input type="radio" id="nav-upcoming" name="navs" />
+                    <label className="nav-item-box" for="nav-upcoming">
+                        <img className="icon" alt="Upcoming Icon" src={upcomingIcon} />
+                        <p>Upcoming</p>
+                    </label>
+                </li>
+             </ul>
+        </nav>
+
+        {/* Task list display area */}
+        <main className="main">
+            <h1 id="inbox-header">Inbox</h1>
+            <h2 id="today-header">Today</h2>
+            <h2 id="upcoming-header">Upcoming</h2>
+
+            {/* Use unordered lists for navigation and task items */}
+            <ul className="task-list">
+                <li className="task-list-item today">
+                    <input type="checkbox" id="task1" name="tasks" />
+                    <label className="task-description" for="task1">Call Mom</label>
+                </li>
+                <li className="task-list-item today">
+                    <input type="checkbox" id="task2" name="tasks" />
+                    <label className="task-description" for="task2">Buy the new issue of Scientific American</label>
+                </li>
+                <li className="task-list-item today">
+                    <input type="checkbox" id="task3" name="tasks" />
+                    <label className="task-description" for="task3">Return the textbook to Josie</label>
+                </li>
+                <li className="task-list-item today">
+                    <input type="checkbox" id="task4" name="tasks" />
+                    <label className="task-description" for="task4">Buy the new album by Rake</label>
+                </li>
+                <li className="task-list-item today">
+                    <input type="checkbox" id="task5" name="tasks" />
+                    <label className="task-description" for="task5">Buy a gift card for Dad</label>
+                </li>
+            </ul> 
+
+            <em className="upcoming">No upcoming tasks after today!</em>
+        </main>
     </>
   )
 }
