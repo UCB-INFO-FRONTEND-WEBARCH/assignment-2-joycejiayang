@@ -175,7 +175,7 @@
   background-color: #dc4c3e;
   border-color: #dc4c3e;
   outline: solid 1.5px white;
-  outline-offset: -3px;
+  outline-offset: -2.5px;
 }
 
 .task-list-item input[type="checkbox"]:checked +  .task-description {

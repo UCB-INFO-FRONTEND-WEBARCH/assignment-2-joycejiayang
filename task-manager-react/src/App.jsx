@@ -12,8 +12,8 @@ function App() {
     <>
       {/* Red navigation bar with search and menu functionality */}
       <header className="header">
-        <input type="checkbox" id="menu-toggle" name="menu-toggle" checked />
-        <label id="menu-label" for="menu-toggle">
+        <input type="checkbox" id="menu-toggle" name="menu-toggle" defaultChecked />
+        <label id="menu-label" htmlFor="menu-toggle">
           <img className="menu icon" alt="Menu Icon" src={menuIcon} />
         </label>
           
@@ -33,8 +33,8 @@ function App() {
             {/* Use unordered lists for navigation and task items */}
              <ul className="nav-list">
                 <li className="hav-list-item">
-                    <input type="radio" id="nav-inbox" name="navs" checked />
-                    <label className="nav-item-box" for="nav-inbox">
+                    <input type="radio" id="nav-inbox" name="navs" defaultChecked />
+                    <label className="nav-item-box" htmlFor="nav-inbox">
                         <img className="icon" alt="Inbox Icon" src={inboxIcon} />
                         <p>Inbox</p>
                         <span className="task-count">5</span>
@@ -43,7 +43,7 @@ function App() {
 
                 <li className="hav-list-item">
                     <input type="radio" id="nav-today" name="navs" />
-                    <label className="nav-item-box" for="nav-today">
+                    <label className="nav-item-box" htmlFor="nav-today">
                         <img className="icon" alt="Today Icon" src={calendarIcon} />
                         <p>Today</p>
                         <span className="task-count">5</span>
@@ -52,7 +52,7 @@ function App() {
 
                 <li className="hav-list-item">
                     <input type="radio" id="nav-upcoming" name="navs" />
-                    <label className="nav-item-box" for="nav-upcoming">
+                    <label className="nav-item-box" htmlFor="nav-upcoming">
                         <img className="icon" alt="Upcoming Icon" src={upcomingIcon} />
                         <p>Upcoming</p>
                     </label>
@@ -70,23 +70,23 @@ function App() {
             <ul className="task-list">
                 <li className="task-list-item today">
                     <input type="checkbox" id="task1" name="tasks" />
-                    <label className="task-description" for="task1">Call Mom</label>
+                    <label className="task-description" htmlFor="task1">Call Mom</label>
                 </li>
                 <li className="task-list-item today">
                     <input type="checkbox" id="task2" name="tasks" />
-                    <label className="task-description" for="task2">Buy the new issue of Scientific American</label>
+                    <label className="task-description" htmlFor="task2">Buy the new issue of Scientific American</label>
                 </li>
                 <li className="task-list-item today">
                     <input type="checkbox" id="task3" name="tasks" />
-                    <label className="task-description" for="task3">Return the textbook to Josie</label>
+                    <label className="task-description" htmlFor="task3">Return the textbook to Josie</label>
                 </li>
                 <li className="task-list-item today">
                     <input type="checkbox" id="task4" name="tasks" />
-                    <label className="task-description" for="task4">Buy the new album by Rake</label>
+                    <label className="task-description" htmlFor="task4">Buy the new album by Rake</label>
                 </li>
                 <li className="task-list-item today">
                     <input type="checkbox" id="task5" name="tasks" />
-                    <label className="task-description" for="task5">Buy a gift card for Dad</label>
+                    <label className="task-description" htmlFor="task5">Buy a gift card for Dad</label>
                 </li>
             </ul> 
 
