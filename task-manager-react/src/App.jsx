@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import './App.css'
+import TaskItem from './src/components/TaskItem.jsx'
 import menuIcon from '../src/assets/menu_icon.png'
 import searchIcon from '../src/assets/search_icon.png'
 import checkIcon from '../src/assets/check_icon.png'
@@ -68,7 +69,9 @@ function App() {
 
             {/* Use unordered lists for navigation and task items */}
             <ul className="task-list">
-                <li className="task-list-item today">
+              <TaskItem />
+
+                {/* <li className="task-list-item today">
                     <input type="checkbox" id="task1" name="tasks" />
                     <label className="task-description" htmlFor="task1">Call Mom</label>
                 </li>
@@ -87,7 +90,7 @@ function App() {
                 <li className="task-list-item today">
                     <input type="checkbox" id="task5" name="tasks" />
                     <label className="task-description" htmlFor="task5">Buy a gift card for Dad</label>
-                </li>
+                </li> */}
             </ul> 
 
             <em className="upcoming">No upcoming tasks after today!</em>
