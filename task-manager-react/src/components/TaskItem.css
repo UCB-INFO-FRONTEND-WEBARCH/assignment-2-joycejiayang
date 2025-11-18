@@ -39,3 +39,12 @@
   text-decoration: line-through;
   text-decoration-color: #dc4c3e;
 }
+
+/* Nav + Inbox Connection */
+.today {
+  display: block; /* we'll set display to block based on which nav is active */
+}
+
+.upcoming {
+  display: none; /* we'll set display to block based on which nav is active */
+}

@@ -1,12 +1,13 @@
 import {useState} from 'react'
 import './App.css'
-import TaskItem from './src/components/TaskItem.jsx'
-import menuIcon from '../src/assets/menu_icon.png'
-import searchIcon from '../src/assets/search_icon.png'
-import checkIcon from '../src/assets/check_icon.png'
-import inboxIcon from '../src/assets/inbox_icon.png'
-import calendarIcon from '../src/assets/calendar_icon.png'
-import upcomingIcon from '../src/assets/upcoming_icon.png'
+import TaskItem from './components/TaskItem.jsx'
+import TaskList from './components/TaskList.jsx'
+import menuIcon from './assets/menu_icon.png'
+import searchIcon from './assets/search_icon.png'
+import checkIcon from './assets/check_icon.png'
+import inboxIcon from './assets/inbox_icon.png'
+import calendarIcon from './assets/calendar_icon.png'
+import upcomingIcon from './assets/upcoming_icon.png'
 
 function App() {
   return (
@@ -68,32 +69,7 @@ function App() {
             <h2 id="upcoming-header">Upcoming</h2>
 
             {/* Use unordered lists for navigation and task items */}
-            <ul className="task-list">
-              <TaskItem />
-
-                {/* <li className="task-list-item today">
-                    <input type="checkbox" id="task1" name="tasks" />
-                    <label className="task-description" htmlFor="task1">Call Mom</label>
-                </li>
-                <li className="task-list-item today">
-                    <input type="checkbox" id="task2" name="tasks" />
-                    <label className="task-description" htmlFor="task2">Buy the new issue of Scientific American</label>
-                </li>
-                <li className="task-list-item today">
-                    <input type="checkbox" id="task3" name="tasks" />
-                    <label className="task-description" htmlFor="task3">Return the textbook to Josie</label>
-                </li>
-                <li className="task-list-item today">
-                    <input type="checkbox" id="task4" name="tasks" />
-                    <label className="task-description" htmlFor="task4">Buy the new album by Rake</label>
-                </li>
-                <li className="task-list-item today">
-                    <input type="checkbox" id="task5" name="tasks" />
-                    <label className="task-description" htmlFor="task5">Buy a gift card for Dad</label>
-                </li> */}
-            </ul> 
-
-            <em className="upcoming">No upcoming tasks after today!</em>
+            <TaskList />
         </main>
     </>
   )

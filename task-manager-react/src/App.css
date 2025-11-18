@@ -136,27 +136,13 @@
   flex: 1;
 }
 
-.main h1, h2 {
-  display: none; /* we'll set display to block based on which nav is active */
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-em {
+/* em {
   color: #7e7d79;
   padding: 10px 0;
-}
+} */
 
 /* Nav + Inbox Connection */
-.today {
-  display: block; /* we'll set display to block based on which nav is active */
-}
-
-.upcoming {
-  display: none; /* we'll set display to block based on which nav is active */
-}
-
-.nav:has(#nav-inbox:checked) + .main #inbox-header {
+/* .nav:has(#nav-inbox:checked) + .main #inbox-header {
   display: block;
 }
 
@@ -174,7 +160,7 @@ em {
 
 .nav:has(#nav-upcoming:checked) + .main .upcoming {
   display: block;
-}
+} */
 
 /* Media Queries */
 @media screen and (max-width: 480px) {
