@@ -1,3 +1,10 @@
+/* Icons */
+.icon {
+    width: 30px;
+    padding: 4px;
+    height: auto;
+}
+
 /* Header */
 .header {
   display: grid;
@@ -117,9 +124,9 @@
 .nav-item-box .task-count {
   color: #7e7d79;
   font-size: 12px;
-  line-height: 28px;
   vertical-align: bottom;
   margin-left: 4px;
+  margin-bottom: 8px;
 }
 
 .nav-list input[type="radio"]:checked + .nav-item-box {

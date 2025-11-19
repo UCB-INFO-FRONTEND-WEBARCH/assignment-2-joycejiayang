@@ -14,29 +14,36 @@ function App() {
     {
       id: "task1",
       completed: false,
-      text: "Call Mom"
+      text: "Call Mom",
+      inboxType: "Today"
     },
     {
       id: "task2",
       completed: false,
-      text: "Buy the new issue of Scientific American"
+      text: "Buy the new issue of Scientific American",
+      inboxType: "Today"
     },
     {
       id: "task3",
       completed: false,
-      text: "Return the textbook to Josie"
+      text: "Return the textbook to Josie",
+      inboxType: "Today"
     },
     {
       id: "task4",
       completed: false,
-      text: "Buy the new album by Rake"
+      text: "Buy the new album by Rake",
+      inboxType: "Today"
     },
     {
       id: "task5",
       completed: false,
-      text: "Buy a gift card for Dad"
+      text: "Buy a gift card for Dad",
+      inboxType: "Upcoming"
     }
   ]
+
+  const [inboxType, setInboxType] = useState("Inbox")
 
   return (
     <>
@@ -63,7 +70,7 @@ function App() {
             {/* Use unordered lists for navigation and task items */}
              <ul className="nav-list">
                 <li className="hav-list-item">
-                    <input type="radio" id="nav-inbox" name="navs" defaultChecked />
+                    <input type="radio" id="nav-inbox" name="navs" checked={inboxType === "Inbox"} onChange={() => setInboxType("Inbox")} />
                     <label className="nav-item-box" htmlFor="nav-inbox">
                         <img className="icon" alt="Inbox Icon" src={inboxIcon} />
                         <p>Inbox</p>
@@ -72,7 +79,7 @@ function App() {
                 </li>
 
                 <li className="hav-list-item">
-                    <input type="radio" id="nav-today" name="navs" />
+                    <input type="radio" id="nav-today" name="navs" checked={inboxType === "Today"} onChange={() => setInboxType("Today")} />
                     <label className="nav-item-box" htmlFor="nav-today">
                         <img className="icon" alt="Today Icon" src={calendarIcon} />
                         <p>Today</p>
@@ -81,7 +88,7 @@ function App() {
                 </li>
 
                 <li className="hav-list-item">
-                    <input type="radio" id="nav-upcoming" name="navs" />
+                    <input type="radio" id="nav-upcoming" name="navs" checked={inboxType === "Upcoming"} onChange={() => setInboxType("Upcoming")} />
                     <label className="nav-item-box" htmlFor="nav-upcoming">
                         <img className="icon" alt="Upcoming Icon" src={upcomingIcon} />
                         <p>Upcoming</p>
@@ -92,7 +99,7 @@ function App() {
 
         {/* Task list display area */}
         <main className="main">
-            <TaskList taskArray={taskArray}/>
+            <TaskList taskArray={taskArray} inboxType={inboxType}/>
         </main>
     </>
   )

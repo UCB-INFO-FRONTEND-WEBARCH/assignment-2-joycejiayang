@@ -2,7 +2,7 @@ import {useState} from 'react'
 import TaskItem from './TaskItem'
 import './TaskList.css'
 
-function TaskList({taskArray}) {
+function TaskList({taskArray, inboxType}) {
     const [tasks, setTasks] = useState(taskArray)
 
     function handleToggle(id) {
@@ -22,11 +22,16 @@ function TaskList({taskArray}) {
 
     return (
         <>
-            <h1 className="task-list-header">Inbox</h1>
+            <h1 className="task-list-header">{inboxType}</h1>
 
             {/* Use unordered lists for navigation and task items */}
             <ul className="task-list">
-                {tasks.map(taskObject => 
+                {tasks.filter(taskObject => {
+                    if (inboxType === "Inbox") {
+                        return true;
+                    }
+                    return taskObject.inboxType === inboxType;
+                }).map(taskObject => 
                     <TaskItem 
                         key={taskObject.id} 
                         taskObject={taskObject} 
