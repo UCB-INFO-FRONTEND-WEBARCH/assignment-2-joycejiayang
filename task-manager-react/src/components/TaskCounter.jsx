@@ -4,11 +4,11 @@ import checkIcon from '../assets/check_icon.png'
 function TaskCounter({numTotalTasks, numCompleted, filterType}) {
     function displayText() {
         if (filterType === "All") {
-            return <span>{numTotalTasks} of {numTotalTasks} tasks</span>
+            return <span>Showing {numTotalTasks} of {numTotalTasks} tasks</span>
         } else if (filterType === "Active") {
-            return <span>{numTotalTasks - numCompleted} of {numTotalTasks} tasks</span>
+            return <span>Showing {numTotalTasks - numCompleted} of {numTotalTasks} tasks</span>
         } else {
-            return <span>{numCompleted} of {numTotalTasks} tasks</span>
+            return <span>Showing {numCompleted} of {numTotalTasks} tasks</span>
         }
     }
 

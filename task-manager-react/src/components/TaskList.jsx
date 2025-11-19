@@ -7,8 +7,12 @@ function TaskList({taskArray, inboxType, updateTaskCounter}) {
     const [filterType, setFilterType] = useState("All")
 
     useEffect(() => {
-        setTasks(taskArray)
-    }, [taskArray])
+        const thisInboxTasks = filterThisInbox(inboxType)
+        const numTotalTasks = thisInboxTasks.length;
+        const numCompleted = thisInboxTasks.filter(taskObject => taskObject.completed).length
+
+        updateTaskCounter(numTotalTasks, numCompleted, filterType)
+    }, [tasks, inboxType, filterType])
 
     function toggleTask(id) {
         setTasks(prevTasks =>
@@ -34,35 +38,25 @@ function TaskList({taskArray, inboxType, updateTaskCounter}) {
         })
     }
 
-    function changeFilterType(newFilterType) {
-        setFilterType(newFilterType)
-
-        const thisInboxTasks = filterThisInbox(inboxType)
-        const numTotalTasks = thisInboxTasks.length;
-        const numCompleted = thisInboxTasks.filter(taskObject => taskObject.completed).length
-
-        updateTaskCounter(numTotalTasks, numCompleted, newFilterType)
-    }
-
     return (
         <>
             <h1 className="task-list-header">{inboxType}</h1>
 
             <ul className="task-filters">
                 <li>
-                    <input type="radio" id="task-filter-all" name="filters" onChange={() => changeFilterType("All")} defaultChecked />
+                    <input type="radio" id="task-filter-all" name="filters" onChange={() => setFilterType("All")} defaultChecked />
                     <label className="task-filter-item" htmlFor="task-filter-all">
                         All
                     </label>
                 </li>
                 <li>
-                    <input type="radio" id="task-filter-active" name="filters" onChange={() => changeFilterType("Active")} />
+                    <input type="radio" id="task-filter-active" name="filters" onChange={() => setFilterType("Active")} />
                     <label className="task-filter-item" htmlFor="task-filter-active">
                         Active
                     </label>
                 </li>
                 <li>
-                    <input type="radio" id="task-filter-completed" name="filters" onChange={() => changeFilterType("Completed")} />
+                    <input type="radio" id="task-filter-completed" name="filters" onChange={() => setFilterType("Completed")} />
                     <label className="task-filter-item" htmlFor="task-filter-completed">
                         Completed
                     </label>

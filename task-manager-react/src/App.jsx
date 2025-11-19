@@ -56,7 +56,6 @@ function App() {
 
   function handleNavMenu(newInboxType) {
     setInboxType(newInboxType)
-    updateTaskCounter()
   }
 
   return (
@@ -73,7 +72,7 @@ function App() {
             <input type="text" placeholder="Quick Find" />
         </div>
 
-        <TaskCounter numTotalTasks={numTotalTasks} numCompleted={numCompleted} filterType={filterType}/>
+        <TaskCounter numTotalTasks={numTotalTasks} numCompleted={numCompleted} filterType={filterType} inboxType={inboxType}/>
       </header>
 
       {/* Sidebar with task categories and counts */}
