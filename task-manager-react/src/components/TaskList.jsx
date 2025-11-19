@@ -2,8 +2,8 @@ import {useState, useEffect} from 'react'
 import TaskItem from './TaskItem'
 import './TaskList.css'
 
-function TaskList({taskArray, inboxType, updateTaskCounter}) {
-    const [tasks, setTasks] = useState(taskArray)
+function TaskList({taskArray, inboxType, updateTaskCounter, toggleTask}) {
+    const tasks = taskArray
     const [filterType, setFilterType] = useState("All")
 
     useEffect(() => {
@@ -13,15 +13,6 @@ function TaskList({taskArray, inboxType, updateTaskCounter}) {
 
         updateTaskCounter(numTotalTasks, numCompleted, filterType)
     }, [tasks, inboxType, filterType])
-
-    function toggleTask(id) {
-        setTasks(prevTasks =>
-            prevTasks.map(taskObject =>
-                taskObject.id === id ? {...taskObject, completed: !taskObject.completed}
-                : taskObject
-            )
-        )
-    }
 
     function deleteTask(id) {
         setTasks(prevTasks =>

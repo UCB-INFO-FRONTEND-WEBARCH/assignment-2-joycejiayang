@@ -70,6 +70,15 @@ function App() {
     setTaskArray(prevArray => [...prevArray, newTask])
   }
 
+  function toggleTask(id) {
+      setTaskArray(taskArray =>
+          taskArray.map(taskObject =>
+              taskObject.id === id ? {...taskObject, completed: !taskObject.completed}
+              : taskObject
+          )
+      )
+  }
+
   return (
     <>
       {/* Red navigation bar */}
@@ -95,7 +104,7 @@ function App() {
                     <label className="nav-item-box" htmlFor="nav-inbox">
                         <img className="icon" alt="Inbox Icon" src={inboxIcon} />
                         <p>Inbox</p>
-                        <span className="task-count">5</span>
+                        <span className="task-count">{numTotalTasks}</span>
                     </label>
                 </li>
 
@@ -104,7 +113,7 @@ function App() {
                     <label className="nav-item-box" htmlFor="nav-today">
                         <img className="icon" alt="Today Icon" src={calendarIcon} />
                         <p>Today</p>
-                        <span className="task-count">5</span>
+                        <span className="task-count">{taskArray.filter(taskObject => taskObject.inboxType === "Today").length}</span>
                     </label>
                 </li>
 
@@ -113,6 +122,7 @@ function App() {
                     <label className="nav-item-box" htmlFor="nav-upcoming">
                         <img className="icon" alt="Upcoming Icon" src={upcomingIcon} />
                         <p>Upcoming</p>
+                        <span className="task-count">{taskArray.filter(taskObject => taskObject.inboxType === "Upcoming").length}</span>
                     </label>
                 </li>
              </ul>
@@ -121,7 +131,7 @@ function App() {
         {/* Task list display area */}
         <main className="main">
             <TaskForm onAddTask={addNewTask}/>
-            <TaskList taskArray={taskArray} inboxType={inboxType} updateTaskCounter={updateTaskCounter} />
+            <TaskList taskArray={taskArray} inboxType={inboxType} updateTaskCounter={updateTaskCounter} toggleTask={toggleTask}/>
         </main>
     </>
   )
