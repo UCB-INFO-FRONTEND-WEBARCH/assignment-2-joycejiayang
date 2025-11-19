@@ -7,7 +7,13 @@
   margin-bottom: 40px;
 }
 
-.task-form input {
+.task-form div {
+  display: flex;
+  gap: 20px;
+}
+
+.task-form input[type="text"] {
+  flex: 1;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.15);
   border: none;
@@ -16,19 +22,40 @@
   transition: background-color 100ms;
 }
 
-.task-form input::placeholder {
+.task-form input[type="text"]::placeholder {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.task-form input:hover {
+.task-form input[type="text"]:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.task-form input:focus {
+.task-form input[type="text"]:focus {
   background-color: white;
   color: black;
   caret-color: #dc4c3e;
   border-bottom: solid 1.5px #dc4c3e;
+}
+
+.task-inbox-type {
+  align-self: center;
+  display: flex;
+  gap: 10px;
+}
+
+.task-inbox-type label {
+  padding: 10px 16px;
+  border-radius: 20px;
+  background-color: #7e7d79;
+  color: white;
+}
+
+.task-inbox-type label:hover {
+  cursor: pointer;
+}
+
+.task-inbox-type input:checked + label {
+  background-color: #dc4c3e;
 }
 
 .add-task-button {

@@ -3,7 +3,7 @@ import './TaskItem.css'
 
 function TaskItem({taskObject, onToggle, onDelete}) {
     return (
-        <li className="task-item today">
+        <li className="task-item">
             <input 
                 className="task-input"
                 type="checkbox" 

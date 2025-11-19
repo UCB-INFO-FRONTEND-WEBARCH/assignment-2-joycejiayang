@@ -19,12 +19,28 @@ function TaskForm({onAddTask}) {
 
     return (
         <form className="task-form" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Add a new task..."
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-            />
+            <div>
+                <input
+                    type="text"
+                    placeholder="Add a new task..."
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <ul className="task-inbox-type">
+                    <li>
+                        <input type="radio" id="today" name="inbox-type" onChange={() => setFilterType("All")} defaultChecked />
+                        <label htmlFor="today">
+                            Today
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="upcoming" name="inbox-type" onChange={() => setFilterType("All")} />
+                        <label htmlFor="upcoming">
+                            Upcoming
+                        </label>
+                    </li>
+                </ul>
+            </div>
             <button className="add-task-button" type="submit">Add</button>
         </form>
     )
