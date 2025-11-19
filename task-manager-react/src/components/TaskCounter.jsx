@@ -1,5 +1,5 @@
-import {useState} from 'react'
 import checkIcon from '../assets/check_icon.png'
+import './TaskCounter.css'
 
 function TaskCounter({numTotalTasks, numCompleted, filterType}) {
     function displayText() {

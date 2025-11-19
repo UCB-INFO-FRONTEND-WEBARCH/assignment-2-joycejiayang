@@ -1,0 +1,48 @@
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #efefef;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.task-form input {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  outline: none;
+  border-bottom: solid 1.5px #ccc;
+  transition: background-color 100ms;
+}
+
+.task-form input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.task-form input:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.task-form input:focus {
+  background-color: white;
+  color: black;
+  caret-color: #dc4c3e;
+  border-bottom: solid 1.5px #dc4c3e;
+}
+
+.add-task-button {
+  padding: 10px 15px;
+  color: black;
+  border: solid 1px #7e7d79;
+  background-color: white;
+  width: fit-content;
+  align-self: center;
+}
+
+.add-task-button:hover {
+  background-color: #dc4c3e;
+  color: white;
+  border-color: #dc4c3e;
+  cursor: pointer;
+}

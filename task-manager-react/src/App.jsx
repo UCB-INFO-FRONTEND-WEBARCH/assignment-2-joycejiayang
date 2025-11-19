@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import './App.css'
+import TaskForm from './components/TaskForm.jsx'
 import TaskCounter from './components/TaskCounter.jsx'
 import TaskList from './components/TaskList.jsx'
 import menuIcon from './assets/menu_icon.png'
@@ -47,6 +48,7 @@ function App() {
   const [filterType, setFilterType] = useState("All")
   const [numTotalTasks, setNumTotalTasks] = useState(initialTaskArray.length)
   const [numCompleted, setNumCompleted] = useState(initialTaskArray.filter(taskObject => taskObject.completed).length)
+  const [objectiveTaskIndex, setObjectiveTaskIndex] = useState(6)
 
   function updateTaskCounter(numTotalTasks, numCompleted, newFilterType) {
     setNumTotalTasks(numTotalTasks)
@@ -54,8 +56,18 @@ function App() {
     setFilterType(newFilterType)
   }
 
-  function handleNavMenu(newInboxType) {
-    setInboxType(newInboxType)
+  function addNewTask(taskText) {
+    const id = "task" + objectiveTaskIndex.toString()
+    setObjectiveTaskIndex(objectiveTaskIndex + 1)
+
+    const newTask = {
+      id: id,
+      completed: false,
+      text: taskText,
+      inboxType: "Today"
+    }
+
+    setTaskArray(prevArray => [...prevArray, newTask])
   }
 
   return (
@@ -79,7 +91,7 @@ function App() {
         <nav className="nav">
              <ul className="nav-list">
                 <li className="hav-list-item">
-                    <input type="radio" id="nav-inbox" name="navs" checked={inboxType === "Inbox"} onChange={() => handleNavMenu("Inbox")} />
+                    <input type="radio" id="nav-inbox" name="navs" checked={inboxType === "Inbox"} onChange={() => setInboxType("Inbox")} />
                     <label className="nav-item-box" htmlFor="nav-inbox">
                         <img className="icon" alt="Inbox Icon" src={inboxIcon} />
                         <p>Inbox</p>
@@ -88,7 +100,7 @@ function App() {
                 </li>
 
                 <li className="hav-list-item">
-                    <input type="radio" id="nav-today" name="navs" checked={inboxType === "Today"} onChange={() => handleNavMenu("Today")} />
+                    <input type="radio" id="nav-today" name="navs" checked={inboxType === "Today"} onChange={() => setInboxType("Today")} />
                     <label className="nav-item-box" htmlFor="nav-today">
                         <img className="icon" alt="Today Icon" src={calendarIcon} />
                         <p>Today</p>
@@ -97,7 +109,7 @@ function App() {
                 </li>
 
                 <li className="hav-list-item">
-                    <input type="radio" id="nav-upcoming" name="navs" checked={inboxType === "Upcoming"} onChange={() => handleNavMenu("Upcoming")} />
+                    <input type="radio" id="nav-upcoming" name="navs" checked={inboxType === "Upcoming"} onChange={() => setInboxType("Upcoming")} />
                     <label className="nav-item-box" htmlFor="nav-upcoming">
                         <img className="icon" alt="Upcoming Icon" src={upcomingIcon} />
                         <p>Upcoming</p>
@@ -108,6 +120,7 @@ function App() {
 
         {/* Task list display area */}
         <main className="main">
+            <TaskForm onAddTask={addNewTask}/>
             <TaskList taskArray={taskArray} inboxType={inboxType} updateTaskCounter={updateTaskCounter} />
         </main>
     </>
