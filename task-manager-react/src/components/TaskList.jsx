@@ -6,7 +6,7 @@ function TaskList({taskArray, inboxType}) {
     const [tasks, setTasks] = useState(taskArray)
     const [filter, setFilter] = useState("All")
 
-    function handleToggle(id) {
+    function toggleTask(id) {
         setTasks(prevTasks =>
             prevTasks.map(taskObject =>
                 taskObject.id === id ? {...taskObject, completed: !taskObject.completed}
@@ -15,7 +15,7 @@ function TaskList({taskArray, inboxType}) {
         )
     }
 
-    function handleDelete(id) {
+    function deleteTask(id) {
         setTasks(prevTasks =>
             prevTasks.filter(taskObject => taskObject.id !== id)
         )
@@ -67,8 +67,8 @@ function TaskList({taskArray, inboxType}) {
                     <TaskItem 
                         key={taskObject.id} 
                         taskObject={taskObject} 
-                        onToggle={handleToggle}
-                        onDelete={handleDelete}/>
+                        onToggle={toggleTask}
+                        onDelete={deleteTask}/>
                 )}
             </ul>
         </>
