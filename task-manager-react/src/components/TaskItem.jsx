@@ -10,10 +10,7 @@ function TaskItem({taskObject, onToggle}) {
                 name="tasks" 
                 checked={taskObject.completed}
                 onChange={() => onToggle(taskObject.id)}/>
-            <label 
-                className="task-description" 
-                htmlFor={taskObject.id}
-            >
+            <label className="task-description" htmlFor={taskObject.id}>
                 {taskObject.text}
             </label>
         </li>
