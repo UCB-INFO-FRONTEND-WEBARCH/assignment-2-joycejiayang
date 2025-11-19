@@ -1,10 +1,14 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import TaskItem from './TaskItem'
 import './TaskList.css'
 
-function TaskList({taskArray, inboxType}) {
+function TaskList({taskArray, inboxType, updateTaskCounter}) {
     const [tasks, setTasks] = useState(taskArray)
-    const [filter, setFilter] = useState("All")
+    const [filterType, setFilterType] = useState("All")
+
+    useEffect(() => {
+        setTasks(taskArray)
+    }, [taskArray])
 
     function toggleTask(id) {
         setTasks(prevTasks =>
@@ -21,25 +25,44 @@ function TaskList({taskArray, inboxType}) {
         )
     }
 
+    function filterThisInbox(inboxType) {
+        return tasks.filter(taskObject => {
+            if (inboxType === "Inbox") {
+                return true;
+            }
+            return taskObject.inboxType === inboxType
+        })
+    }
+
+    function changeFilterType(newFilterType) {
+        setFilterType(newFilterType)
+
+        const thisInboxTasks = filterThisInbox(inboxType)
+        const numTotalTasks = thisInboxTasks.length;
+        const numCompleted = thisInboxTasks.filter(taskObject => taskObject.completed).length
+
+        updateTaskCounter(numTotalTasks, numCompleted, newFilterType)
+    }
+
     return (
         <>
             <h1 className="task-list-header">{inboxType}</h1>
 
             <ul className="task-filters">
                 <li>
-                    <input type="radio" id="task-filter-all" name="filters" onChange={() => setFilter("All")} defaultChecked />
+                    <input type="radio" id="task-filter-all" name="filters" onChange={() => changeFilterType("All")} defaultChecked />
                     <label className="task-filter-item" htmlFor="task-filter-all">
                         All
                     </label>
                 </li>
                 <li>
-                    <input type="radio" id="task-filter-active" name="filters" onChange={() => setFilter("Active")} />
+                    <input type="radio" id="task-filter-active" name="filters" onChange={() => changeFilterType("Active")} />
                     <label className="task-filter-item" htmlFor="task-filter-active">
                         Active
                     </label>
                 </li>
                 <li>
-                    <input type="radio" id="task-filter-completed" name="filters" onChange={() => setFilter("Completed")} />
+                    <input type="radio" id="task-filter-completed" name="filters" onChange={() => changeFilterType("Completed")} />
                     <label className="task-filter-item" htmlFor="task-filter-completed">
                         Completed
                     </label>
@@ -56,9 +79,9 @@ function TaskList({taskArray, inboxType}) {
                     }
                     return taskObject.inboxType === inboxType;
                 }).filter(taskObject => {
-                    if (filter === "Active") {
+                    if (filterType === "Active") {
                         return !taskObject.completed;
-                    } else if (filter === "Completed") {
+                    } else if (filterType === "Completed") {
                         return taskObject.completed
                     } else {
                         return true;
