@@ -1,15 +1,21 @@
 import {useState} from 'react'
 import './TaskItem.css'
 
-function TaskItem({task}) {
+function TaskItem({taskObject, onToggle}) {
     return (
         <li className="task-item today">
             <input 
                 type="checkbox" 
-                id={task.id} 
+                id={taskObject.id} 
                 name="tasks" 
-                checked={task.completed}/>
-            <label className="task-description" htmlFor={task.id}>{task.text}</label>
+                checked={taskObject.completed}
+                onChange={() => onToggle(taskObject.id)}/>
+            <label 
+                className="task-description" 
+                htmlFor={taskObject.id}
+            >
+                {taskObject.text}
+            </label>
         </li>
     )
 }
