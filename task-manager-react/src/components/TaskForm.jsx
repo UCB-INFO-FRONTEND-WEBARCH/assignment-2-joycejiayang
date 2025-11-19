@@ -3,6 +3,7 @@ import './TaskForm.css'
 
 function TaskForm({onAddTask}) {
     const [inputValue, setInputValue] = useState("")
+    const [inboxType, setInboxType] = useState("Today")
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -13,7 +14,7 @@ function TaskForm({onAddTask}) {
             return;
         }
 
-        onAddTask(trimmed)
+        onAddTask(trimmed, inboxType)
         setInputValue("")
     }
 
@@ -28,13 +29,13 @@ function TaskForm({onAddTask}) {
                 />
                 <ul className="task-inbox-type">
                     <li>
-                        <input type="radio" id="today" name="inbox-type" onChange={() => setFilterType("All")} defaultChecked />
+                        <input type="radio" id="today" name="inbox-type" onChange={() => setInboxType("Today")} defaultChecked />
                         <label htmlFor="today">
                             Today
                         </label>
                     </li>
                     <li>
-                        <input type="radio" id="upcoming" name="inbox-type" onChange={() => setFilterType("All")} />
+                        <input type="radio" id="upcoming" name="inbox-type" onChange={() => setInboxType("Upcoming")} />
                         <label htmlFor="upcoming">
                             Upcoming
                         </label>

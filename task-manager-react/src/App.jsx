@@ -56,7 +56,7 @@ function App() {
     setFilterType(newFilterType)
   }
 
-  function addNewTask(taskText) {
+  function addNewTask(taskText, inboxTypeSelection) {
     const id = "task" + objectiveTaskIndex.toString()
     setObjectiveTaskIndex(objectiveTaskIndex + 1)
 
@@ -64,7 +64,7 @@ function App() {
       id: id,
       completed: false,
       text: taskText,
-      inboxType: "Today"
+      inboxType: inboxTypeSelection
     }
 
     setTaskArray(prevArray => [...prevArray, newTask])
