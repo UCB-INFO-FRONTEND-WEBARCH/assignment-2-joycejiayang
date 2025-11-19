@@ -14,6 +14,12 @@ function TaskList({taskArray}) {
         )
     }
 
+    function handleDelete(id) {
+        setTasks(prevTasks =>
+            prevTasks.filter(taskObject => taskObject.id !== id)
+        )
+    }
+
     return (
         <>
             <h1 className="task-list-header">Inbox</h1>
@@ -21,7 +27,11 @@ function TaskList({taskArray}) {
             {/* Use unordered lists for navigation and task items */}
             <ul className="task-list">
                 {tasks.map(taskObject => 
-                    <TaskItem key={taskObject.id} taskObject={taskObject} onToggle={handleToggle}/>
+                    <TaskItem 
+                        key={taskObject.id} 
+                        taskObject={taskObject} 
+                        onToggle={handleToggle}
+                        onDelete={handleDelete}/>
                 )}
             </ul>
         </>
