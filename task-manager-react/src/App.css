@@ -39,10 +39,6 @@
   background-color:rgba(0, 0, 0, 0.10);
 }
 
-#menu-toggle {
-  display: none;
-}
-
 .header:has(#menu-toggle:not(:checked)) + .nav {
   display: none;
 }
@@ -96,10 +92,6 @@
 
 .nav-list {
   padding: 25px 20px;
-}
-
-.nav-list input[type="radio"] {
-  display: none;
 }
 
 .nav-item-box {

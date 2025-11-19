@@ -10,7 +10,7 @@ import calendarIcon from './assets/calendar_icon.png'
 import upcomingIcon from './assets/upcoming_icon.png'
 
 function App() {
-  const taskArray = [
+  const initialTaskArray = [
     {
       id: "task1",
       completed: false,
@@ -99,7 +99,7 @@ function App() {
 
         {/* Task list display area */}
         <main className="main">
-            <TaskList taskArray={taskArray} inboxType={inboxType}/>
+            <TaskList taskArray={initialTaskArray} inboxType={inboxType}/>
         </main>
     </>
   )

@@ -2,3 +2,27 @@
   font-size: 20px;
   margin-bottom: 10px;
 }
+
+.task-filters {
+  padding: 10px 0 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.task-filter-item {
+  padding: 6px 8px;
+  border: solid 1px #7e7d79;
+  background-color: white;
+}
+
+.task-filter-item:hover {
+  cursor: pointer;
+  background-color: rgba(220, 76, 62, 0.5);
+  border-color: #dc4c3e;
+}
+
+.task-filters > li > input:checked + .task-filter-item {
+  background-color: #dc4c3e;
+  border-color: #dc4c3e;
+  color: white;
+}
